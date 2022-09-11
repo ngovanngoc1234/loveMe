@@ -33,12 +33,15 @@
     <div id="wrap">
         <div id="text">
             <div id="code">
-                <h1 style="position:absolute; left:-7px; top:-1px;">Do you love me?</h1>
-                <input type="button" value=" YES " onclick="yesClick()"
-                       style="position:absolute; left:-38px; top:96px;"/>
-                <input type="button" id="btnNo" value="  NO  " onmouseover="noHover()"
-                       style="position:absolute; left:212px; top:96px;"/>
+                <h1 style="position:absolute; left:-7px; top:-1px;">Do You Love Me?</h1>
+                <button id="yes" type="button" value=" YES "
+                        style="position:absolute; left:-38px; top:96px;"> YES
+                </button>
+                <button type="button" id="btnNo" value="  NO  " onmouseover="noHover()"
+                        style="position:absolute; left:212px; top:96px;"> NO
+                </button>
             </div>
+
         </div>
         <div id="clock-box">
             <span class="STYLE1"></span><font color="#FF0000"></font>
@@ -55,13 +58,14 @@
 
 
         </div>
-        <canvas id="canvas" width="1100" height="680"></canvas>
+        <canvas id="canvas" width="1100px" height="680"></canvas>
     </div>
 
 </div>
 
 
 <script type="text/javascript">
+
 
     function yesClick() {
         alert("Yes. you are right ");
@@ -239,12 +243,14 @@
 
 
 <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
-    <p>Người Hẹn Em Nè: ><a href="#" id="myLink" onclick="navigate()" target="_blank"/>Anh này ♥</p>
+    <!--    <p>Người Hẹn Em Nè: ><a href="#" id="myLink" onclick="navigate()" target="_blank"/>Anh này ♥</p>-->
 </div>
 
 
 <script type="text/javascript">
-    let value = prompt("Nhập link FB vào đây....")
+    // let value = prompt("Nhập link FB vào đây....")
+    //
+    // alert("Play music hộ tui nha...")
 
     function navigate() {
         if (value.includes("http", 0)) {
@@ -260,8 +266,8 @@
 </script>
 
 
-<audio autoplay>
-    <source src="music/Playlist_3" type="audio/mp3"/>
+<audio controls autoplay>
+    <source src="music/Playlist_3.mp3" type="audio/mp3"/>
 </audio>
 
 
