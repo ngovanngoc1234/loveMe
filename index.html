@@ -15,13 +15,14 @@
     <script type="text/javascript" src="./js/jscex-async-powerpack.min.js"></script>
     <script type="text/javascript" src="./js/functions.js" charset="utf-8"></script>
     <script type="text/javascript" src="./js/love.js" charset="utf-8"></script>
-    <style type="text/css">
-        <!--
-        .STYLE1 {
-            color: #666666
-        }
 
-        -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style type="text/css">
+
+
     </style>
 
 </head>
@@ -33,17 +34,24 @@
     <div id="wrap">
         <div id="text">
             <div id="code">
-                <h1 style="position:absolute; left:-7px; top:-1px;">Do You Love Me?</h1>
-                <button id="yes" type="button" value=" YES "
-                        style="position:absolute; left:-38px; top:96px;"> YES
+                <section class="light">
+                    <h1 class="gradient1" style="position: fixed;left: 250px;top: 82px;">Do You Love Me?</h1>
+                </section>
+
+                <button id="yes" type="button" class="btn btn-success"
+                        data-toggle="modal" data-target="#myModal"
+                        style="position:absolute;left: -156px; top:96px;">YES
                 </button>
-                <button type="button" id="btnNo" value="  NO  " onmouseover="noHover()"
-                        style="position:absolute; left:212px; top:96px;"> NO
+
+                <button type="button" id="btnNo" onmouseover="noHover()" class="btn btn-danger"
+                        style="position:absolute; left:110px; top:96px;">NO
                 </button>
+
+
             </div>
 
         </div>
-        <div id="clock-box">
+        <div id="clock-box" style="display: block;">
             <span class="STYLE1"></span><font color="#FF0000"></font>
             <span class="STYLE1">
 
@@ -65,11 +73,6 @@
 
 
 <script type="text/javascript">
-
-
-    function yesClick() {
-        alert("Yes. you are right ");
-    }
 
     function noHover() {
         var x = Math.round(Math.random() * document.getElementById("text").offsetWidth);
@@ -242,28 +245,34 @@
 </script>
 
 
-<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
-    <!--    <p>Người Hẹn Em Nè: ><a href="#" id="myLink" onclick="navigate()" target="_blank"/>Anh này ♥</p>-->
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title"> ♥ ♥ ♥ ♥ ♥ </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                Lựa chọn đã được gửi...
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
 </div>
 
-
-<script type="text/javascript">
-    // let value = prompt("Nhập link FB vào đây....")
-    //
-    // alert("Play music hộ tui nha...")
-
-    function navigate() {
-        if (value.includes("http", 0)) {
-            document.getElementById("myLink").href = value;
-        } else {
-            let edit = "https://"
-            document.getElementById("myLink").href = edit + value;
-        }
-
-        return false;
-    }
-
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 
 <audio controls autoplay>
