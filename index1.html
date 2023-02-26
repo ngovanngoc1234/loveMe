@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Snake Game</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body onload="startGame()">
+<canvas id="gameCanvas" width="500" height="500"></canvas>
+<script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+    let score = 0;
+    const blockSize = 10;
+    let width = canvas.width;
+    let height = canvas.height;
+    let snake = [];
+    let snakeLength = 5;
+    let snakeX = 150;
+    let snakeY = 150;
+    let foodX = Math.floor(Math.random() * (width - blockSize) / blockSize) * blockSize;
+    let foodY = Math.floor(Math.random() * (height - blockSize) / blockSize) * blockSize;
+    let dx = blockSize;
+    let dy = 0;
+
+    document.addEventListener("keydown", changeDirection);
+
+    function startGame() {
+        snake = [];
+        snakeLength = 5;
+        snakeX = 150;
+        snakeY = 150;
+        dx = blockSize;
+        dy = 0;
+        score = 0;
+        for (let i = snakeLength - 1; i >= 0; i--) {
+            snake.push({ x: snakeX, y: snakeY });
+        }
+        setInterval(draw, 100);
+    }
+
+    function draw() {
+        snakeX += dx;
+        snakeY += dy;
+
+        // Check if the snake's head has gone out of bounds
+        if (snakeX > width - blockSize) {
+            snakeX = 0;
+        } else if (snakeX < 0) {
+            snakeX = width - blockSize;
+        } else if (snakeY > height - blockSize) {
+            snakeY = 0;
+        } else if (snakeY < 0) {
+            snakeY = height - blockSize;
+        }
+
+        if (snakeX == foodX && snakeY == foodY) {
+            score++;
+            snakeLength++;
+            foodX = Math.floor(Math.random() * (width - blockSize) / blockSize) * blockSize;
+            foodY = Math.floor(Math.random() * (height - blockSize) / blockSize) * blockSize;
+        } else {
+            snake.pop();
+        }
+
+        snake.unshift({ x: snakeX, y: snakeY });
+
+        for (let i = 0; i < snake.length; i++) {
+            if (i == 0 && (snake[i].x > width || snake[i].x < 0 || snake[i].y > height || snake[i].y < 0)) {
+                alert("Game Over");
+                document.location.reload();
+            } else if (i > 0 && snake[i].x == snake[0].x && snake[i].y == snake[0].y) {
+                alert("Game Over");
+                document.location.reload();
+            }
+        }
+
+        ctx.clearRect(0, 0, width, height);
+        drawFood();
+        drawSnake();
+        ctx.fillText("Score: " + score, 5, height - 5);
+    }
+
+
+    function changeDirection(event) {
+        if (event.keyCode == 37 && dx == 0) {
+            dx = -blockSize;
+            dy = 0;
+        }
+        else if (event.keyCode == 38 && dy == 0) {
+            dx = 0;
+            dy = -blockSize;
+        } else if (event.keyCode == 39 && dx == 0) {
+            dx = blockSize;
+            dy = 0;
+        } else if (event.keyCode == 40 && dy == 0) {
+            dx = 0;
+            dy = blockSize;
+        }
+    }
+
+    function drawFood() {
+        ctx.fillStyle = "red";
+        ctx.strokestyle = "black";
+        ctx.fillRect(foodX, foodY, blockSize, blockSize);
+        ctx.strokeRect(foodX, foodY, blockSize, blockSize);
+    }
+
+    function drawSnake() {
+        for (let i = 0; i < snake.length; i++) {
+            ctx.fillStyle = "green";
+            ctx.strokestyle = "black";
+            ctx.fillRect(snake[i].x, snake[i].y, blockSize, blockSize);
+            ctx.strokeRect(snake[i].x, snake[i].y, blockSize, blockSize);
+        }
+    }
+</script>
+</body>
+</html>
