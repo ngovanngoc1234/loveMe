@@ -19,7 +19,7 @@ function startTx() {
             document.write("</tr></table>")
             returns = 0
         }
-    }, 35000)
+    }, 30000)
 }
 
 
